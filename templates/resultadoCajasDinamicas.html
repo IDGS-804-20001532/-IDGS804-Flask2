@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h3 class="text-center">DATOS</h3>
+<br>
+<div class="text-center">
+    <h4>Números</h4>
+    {% for valor in valores %}
+    <h6>Los números ingresados fueron : {{ valor }}</h6>
+    {% endfor %}
+</div>
+<br>
+<h3 class="text-center">RESULTADOS</h3>
+<div class="text-center">
+    <h5>El número menor ingresado fue: {{ resultadoMin }}</h5>
+    <h5>El número mayor ingresado fue: {{ resultadoMax }}</h5>
+    <h5>El promedio de los números ingresados fue: {{ resultadoPromedio }}</h5>
+    <h5>Los números que se repitieron fueron: </h5>
+    {% for i, repetidos in cajasArreglo%}
+    <h6>El número {{ i }} se repitió {{ repetidos }}</h6>
+    {% endfor %}
+</div>
+{% endblock %}

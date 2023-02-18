@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Datos</h1>
+<h2>El tema es {{nombre}}</h2>
+{% for object in listal %}
+<h3>{{object}}</h3>
+{% endfor%}
+{% endblock %}

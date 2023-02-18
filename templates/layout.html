@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        padding-top: 60px;
+    }
+
+    .tr-head {
+        background-color: aquamarine;
+    }
+
+    .caja {
+        background: linear-gradient(#75ccb9, #dbffff);
+        background-attachment: fixed;
+    }
+</style>
+
+<body class="caja">
+    <div class="navbar navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a href="" class="brand"></a>
+                UTL-IDGS804
+            </div>
+            <ul class="nav">
+                <li class="active">
+                    <a href="">
+                        <i class="icon-home icon-white"></i>
+                        Index
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav">
+                <li>
+                    <a href="">
+                        <i class="icon-user icon-white"></i>
+                        Usuarios
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav">
+                <li>
+                    <a href="">
+                        <i class="icon-home icon-white"></i>
+                        Alumnos
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+</body>
+
+</html>

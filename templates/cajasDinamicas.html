@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+{% from "_macros2.html" import render_field, render_input %}
+<form action="/" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <div class="text-center">
+        {{ render_field(form.numCant) }}
+        <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
+    </div>
+</form>
+{% if form.numCant.data %}
+<form action="/resultadoCajas" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <div class="text-center">
+        <h1>Las cajas generadas son las siguientes:</h1>
+        {% for i in range(0, form.numCant.data) %}
+        <h5>Ingresa el número en la caja {{i+1}}</h5>
+        {{ render_input(name="num-" ~ i) }}<br>
+        {% endfor %}
+        <div class="mt-5 text-center">
+            <button type="submit" class="btn btn-success btn-lg">Aceptar</button>
+        </div>
+    </div>
+</form>
+{% endif %}
+{% endblock %}
