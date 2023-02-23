@@ -57,9 +57,22 @@
             </ul>
         </div>
     </div>
+    <div class="container">
+        {%with messages = get_flashed_messages()%}
+        {%if messages %}
+            {%for messages in messages%}
+             <div class="alert alert-success">
+                {{ message }}
+             </div>
+            {%endfor%}
+        {%endif%}    
+        
+    {%endwith%}
+
     {% block content %}
 
     {% endblock %}
+</div>
 </body>
 
 </html>
