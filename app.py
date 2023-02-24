@@ -79,13 +79,20 @@ def traductor():
     reg_traducto=forms.TraductorForm(request.form)
     datos=list()
     if request.method=='POST':
-        datos.append(reg_traducto.txtEspanol.data.lower())
-        datos.append(reg_traducto.txtIngles.data.lower())
-        f=open('Traductor.txt', 'a')
-        f.write(str(datos[0])+"\n")
-        f.write(str(datos[1])+"\n")
-        print(f)
-        return render_template("TraductorR.html", form=reg_traducto, datos=datos)
+        if(reg_traducto.txtEspanol.data.lower()=="" and reg_traducto.txtIngles.data.lower()==""):
+            rep="Debes ingresar el texto en español"
+            return render_template("Traductor.html", form=reg_traducto, datos=datos, rep=rep)
+        if(reg_traducto.txtIngles.data.lower()==""):
+            rep1="Debes ingresar el texto en ingles"
+            return render_template("Traductor.html", form=reg_traducto, datos=datos, rep1=rep1)
+        else:
+            datos.append(reg_traducto.txtEspanol.data.lower())
+            datos.append(reg_traducto.txtIngles.data.lower())
+            f=open('Traductor.txt', 'a')
+            f.write(str(datos[0])+"\n")
+            f.write(str(datos[1])+"\n")
+            print(f)
+            return render_template("TraductorR.html", form=reg_traducto, datos=datos)
 
     return render_template("Traductor.html", form=reg_traducto, datos=datos)
 
@@ -96,29 +103,34 @@ def traductorR():
     if request.method=='POST':
         selTrad= (request.form.get("btnTraductor"))
         palabraT=str(reg_traductor.txtPalabra.data).lower()
-        f=open('Traductor.txt', 'r')
-        txtP = [linea.rstrip('\n') for linea in f]
-        if(selTrad=="1"):
-             for i in range(len(txtP)):
-                if(txtP[i-1]== (palabraT)):
-                    textoE = txtP[i - 2]
-                    s="La traduccion al español es: "+textoE.capitalize()
-                    return render_template("TraductorR.html",s=s,form=reg_traductor)
-                else:
-                    s="Lo sentimos esta palabra no fue encontrada: "+palabraT
-                    return render_template("TraductorR.html",s=s,form=reg_traductor)
-        elif(selTrad=="2"):
-            for i in range(len(txtP)):
-                if(txtP[i-2] == palabraT):
-                    textoE = txtP[i - 1]
-                    s="La traduccion al ingles es: "+textoE.capitalize()
-                    return render_template("TraductorR.html",s=s,form=reg_traductor)
-                else:
-                    s="Lo sentimos esta palabra no fue encontrada: "+palabraT
-                    return render_template("TraductorR.html",s=s,form=reg_traductor)
+        if(palabraT==""):
+            ree="Debes ingresar la palabra a traducir"
+            return render_template("TraductorR.html",form=reg_traductor, ree=ree)
         else:
-            r="Debes seleccionar el idioma a traducir"
-            return render_template("TraductorR.html",form=reg_traductor, r=r)
+            f=open('Traductor.txt', 'r')
+            txtP = [linea.rstrip('\n') for linea in f]
+            if(selTrad=="1"):
+                for i in range(len(txtP)):
+                    if(txtP[i-1]== (palabraT)):
+                        textoE = txtP[i - 2]
+                        s="La traduccion al español es: "+textoE.capitalize()
+                        return render_template("TraductorR.html",s=s,form=reg_traductor)
+                    else:
+                        s="Lo sentimos esta palabra no fue encontrada: "+palabraT
+                        return render_template("TraductorR.html",s=s,form=reg_traductor)
+            elif(selTrad=="2"):
+                for i in range(len(txtP)):
+                    if(txtP[i-2] == palabraT):
+                        textoE = txtP[i - 1]
+                        s="La traduccion al ingles es: "+textoE.capitalize()
+                        return render_template("TraductorR.html",s=s,form=reg_traductor)
+                    else:
+                        s="Lo sentimos esta palabra no fue encontrada: "+palabraT
+                        return render_template("TraductorR.html",s=s,form=reg_traductor)
+            else:
+                r="Debes seleccionar el idioma a traducir"
+                return render_template("TraductorR.html",form=reg_traductor, r=r)
+
 
     return render_template("TraductorR.html",form=reg_traductor)
 

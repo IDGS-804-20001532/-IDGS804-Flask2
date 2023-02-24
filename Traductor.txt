@@ -4,3 +4,5 @@ puerta
 door
 rosa
 pink
+oso
+bear

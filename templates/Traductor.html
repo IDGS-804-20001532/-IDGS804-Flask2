@@ -10,7 +10,9 @@
         <div class="row control-group">
             <div class="form-group">
                 {{render_firld(form.txtEspanol, class='form-control')}}
-                {{render_firld(form.txtIngles, class='form-control')}}    
+                <spam style="color: red;">{{rep}}</spam>
+                {{render_firld(form.txtIngles, class='form-control')}}   
+                <spam style="color: red;">{{rep1}}</spam>
             </div>
             <input type="submit" id="al" class="btn btn-info" name="al" value="Guardar">
         </div>
@@ -24,7 +26,6 @@
         </div>
     </form>
 </div>
-
 {% endblock %}
 
 
