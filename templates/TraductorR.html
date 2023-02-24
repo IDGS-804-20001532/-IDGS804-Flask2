@@ -1,0 +1,34 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-xs-6 text-center">
+    {%from "_macros.html" import render_firld %}
+    <form action="/TraductorR" method="POST" novalidate>
+        {{form.csrf_token}}
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+        <div>
+            <label class="form-label"><b>Selecciona la opcion a traducir</b></label>
+            <label class="form-label"><b>Español</b></label>
+            <input type="radio" id="1" name="btnTraductor" value="1">
+            <label class="form-label"><b>Ingles</b></label>
+            <input type="radio" id="2" name="btnTraductor" value="2">
+        </div>
+        <div>
+            <small style="color: red;">{{r}}</small>
+        </div>
+        <div class="form-group" id="contenido">
+                {{render_firld(form.txtPalabra, class='form-control')}} 
+        </div>
+        <div>
+            <small style="color: red;">{{resp}}</small>
+        </div>
+        <input type="submit" value="Traducir" class="btn btn-success">
+    </form> 
+</div>
+<div class="col-xs-6 text-center">
+    <h1>{{s}}</h1>
+</div>
+{% endblock %}
+
+

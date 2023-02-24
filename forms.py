@@ -25,9 +25,15 @@ class TraductorForm(Form):
     txtEspanol=StringField('Ingresa la palabra en Español',
     [validators.DataRequired('El campo es requeriddo'),
     validators.length(min=1, max=20, message='Ingresa min 1 max 20')])
+
     txtIngles=StringField('Ingresa la palabra en Ingles',
     [validators.DataRequired('El campo es requeriddo'),
     validators.length(min=1, max=20, message='Ingresa min 1 max 20')])
+
+    txtPalabra=StringField('Ingresa la palabra a Traducir',
+    [validators.DataRequired('El campo es requeriddo'),
+    validators.length(min=1, max=20, message='Ingresa min 1 max 20')])
+
 
 class LoginForm(Form):
     username=StringField('Usuario',

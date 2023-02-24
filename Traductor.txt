@@ -1,10 +1,6 @@
-Hola
-Hello
-Hola
-Hello
-Hola
-Hello
-Hola
-Hello
-Hola
-Hello
+hola
+hello
+puerta
+door
+rosa
+pink

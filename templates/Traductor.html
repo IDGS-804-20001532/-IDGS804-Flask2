@@ -1,43 +1,30 @@
+
 {% extends "layout.html" %}
 
 {% block content %}
 <div class="col-xs-6 text-center">
     {%from "_macros.html" import render_firld %}
-    <form action="" method="POST" novalidate>
+    <form action="/Traductor" method="POST" novalidate>
         {{form.csrf_token}}
         <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
         <div class="row control-group">
             <div class="form-group">
                 {{render_firld(form.txtEspanol, class='form-control')}}
-                {{render_firld(form.txtIngles, class='form-control')}}
+                {{render_firld(form.txtIngles, class='form-control')}}    
             </div>
             <input type="submit" id="al" class="btn btn-info" name="al" value="Guardar">
-    </form>
-    <form action="/TraductorR" method="POST" novalidate>
-        {{form.csrf_token}}
-            <div>
-                <label class="form-label"><b>Selecciona la opcion a traducir</b></label>
-                <label class="form-label"><b>Español</b></label>
-                <input type="radio" id="1" name="btnTraductor" value="1">
-                <label class="form-label"><b>Ingles</b></label>
-                <input type="radio" id="2" name="btnTraductor" value="2">
-            </div>
-            <div>
-                <div class="form-group" id="contenido">
-                    <label for="txtespaniol">Ingresa la palabra a traducir</label>
-                    <input type="text" name="txtnum" id="txtnum">
-                </div>
-            </div>
         </div>
-        <input type="submit" value="Traducir" class="btn btn-success">
+    </form>
+    <form action="/TraductorR" method="POST">
+        {{form.csrf_token}}
+        <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+        <div class="row control-group">
+            <input type="submit" id="al" class="btn btn-danger" name="al" value="Ir a pagina de tradución">
+
+        </div>
     </form>
 </div>
-<div class="col-md-4">
-    <h1>{{s}}</h1><br>
 
-    <h1></h1><br>
-
-</div>
 {% endblock %}
 
 
